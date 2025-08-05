@@ -1,5 +1,3 @@
-import pytest
-# TODO: add necessary import
 import numpy as np
 import pandas as pd
 from sklearn.base import ClassifierMixin
@@ -41,9 +39,12 @@ def test_inference_shape():
 
 
 # TODO: implement the third test. Change the function name and input as needed
-def test_three():
-    """
-    # add description for the third test
-    """
-    # Your code here
-    pass
+def test_slice_metrics():
+    X, y, enc, lb = process_data(DF, CATS, label=LABEL, training=True)
+    model = train_model(X, y)
+    p, r, f1, cnt = performance_on_categorical_slice(
+        DF, "sex", "Male", CATS, LABEL, enc, lb, model
+    )
+    # precision / recall / f1 are between 0 and 1, count is non-negative
+    assert 0.0 <= p <= 1.0 and 0.0 <= r <= 1.0 and 0.0 <= f1 <= 1.0
+    assert cnt >= 0

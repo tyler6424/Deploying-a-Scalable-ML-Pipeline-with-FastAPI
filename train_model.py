@@ -59,7 +59,7 @@ X_test, y_test, _, _ = process_data(
 model = train_model(X_train, y_train)
 
 # save the model and the encoder
-model_dir = project_path / "model"
+model_dir = root_dir / "model"
 save_model(model, encoder, lb, model_dir=model_dir)
 
 # load the model

@@ -21,6 +21,10 @@ def train_model(X_train: np.ndarray, y_train: np.ndarray):
     model.fit(X_train, y_train)
     return model
 
+def inference(model, X: np.ndarray) -> np.ndarray:
+    """Run model inference."""
+    return model.predict(X)
+
 
 def compute_model_metrics(y: np.ndarray, preds: np.ndarray):
     """
